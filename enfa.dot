@@ -1,0 +1,36 @@
+digraph Automata {
+  rankdir=LR;
+
+  node [shape = point];
+  start_node;
+
+  node [shape = doublecircle];
+  n_10 [label="10"];
+
+  node [shape = circle];
+  n_0 [label="0"];
+  n_1 [label="1"];
+  n_2 [label="2"];
+  n_3 [label="3"];
+  n_4 [label="4"];
+  n_5 [label="5"];
+  n_6 [label="6"];
+  n_7 [label="7"];
+  n_8 [label="8"];
+  n_9 [label="9"];
+
+  start_node -> n_0;
+  n_0 -> n_1 [label="ε"];
+  n_0 -> n_7 [label="ε"];
+  n_1 -> n_2 [label="ε"];
+  n_1 -> n_3 [label="ε"];
+  n_2 -> n_4 [label="a"];
+  n_3 -> n_5 [label="b"];
+  n_4 -> n_6 [label="ε"];
+  n_5 -> n_6 [label="ε"];
+  n_6 -> n_1 [label="ε"];
+  n_6 -> n_7 [label="ε"];
+  n_7 -> n_8 [label="a"];
+  n_8 -> n_9 [label="b"];
+  n_9 -> n_10 [label="b"];
+}

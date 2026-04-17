@@ -43,4 +43,29 @@ defmodule AutomataTest do
     assert dfa_accepted == expected_accepted
     assert dfa_delta == expected_delta
   end
+
+  test "e_closure/2 calcula correctamente el cierre epsilon del automata de prueba" do
+    assert Automata.e_closure(Automata.enfa(), MapSet.new([:q0])) ==
+             MapSet.new([:q0, :q1, :q2])
+
+    assert Automata.e_closure(Automata.enfa(), MapSet.new([:q1])) ==
+             MapSet.new([:q1, :q2])
+
+    assert Automata.e_closure(Automata.enfa(), MapSet.new([:q2])) ==
+             MapSet.new([:q2])
+  end
+
+  test "e_determinize/1 genera un DFA con estado inicial correcto para la parte 3" do
+    {dfa_states, dfa_alphabet, dfa_delta, dfa_start, dfa_accepted} =
+      Automata.e_determinize(Automata.p3_enfa())
+
+    assert dfa_alphabet == MapSet.new([:a, :b])
+
+    assert dfa_start == MapSet.new([0, 1, 2, 3, 7])
+
+    assert MapSet.member?(dfa_states, dfa_start)
+
+    assert map_size(dfa_delta) > 0
+    assert MapSet.size(dfa_accepted) > 0
+  end
 end
